@@ -1,0 +1,132 @@
+openapi: 3.0.1
+servers:
+  - description: Index swagger
+    #url local
+    #- url: https://localhost:8080
+    #url produccion
+    url: https://api.samtel.co
+info:
+  description: Servicio de entidad Usuario.
+  version: 0.0.1
+  title: Usuarios
+  contact:
+    name: Samtel
+    url: https://www.samtel.co/
+    email: api@samtel.co
+  license:
+    name: GNU GPLv3
+    url: ‘https://www.gnu.org/licenses/gpl-3.0.html’
+tags:
+  - name: Usuarios
+    description: Gestion de usuarios
+#----------------------------
+#Endpoints de la Entidad
+#----------------------------
+paths:
+  /v1/es/usuario:
+    post:
+      tags:
+        - Crear usuario
+      operationId: crearUsuario
+      requestBody:
+        description: Crear usuario
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UsuarioTypeInput"
+      responses:
+        "200":
+          description: Usuario creado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UsuarioTypeResponse"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+  /v1/es/listUsuario/{idtbl_user}:
+    get:
+      tags:
+        - Listar usuario
+      parameters:
+        - in: path
+          name: idtbl_user   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The user ID
+      operationId: listarUsuario
+      responses:
+        "200":
+          description: Usuario creado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UsuarioTypeResponse"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+#---------------------------------------------
+#Se declaran los Modelos/Schemas del servicio
+#---------------------------------------------
+components:
+  schemas:
+    UsuarioTypeResponse:
+      type: object
+      properties:
+        tbl_name:
+          type: string
+        tbl_lastname:
+          type: string
+        tbl_createat:
+          type: string
+          format: date
+    UsuarioTypeInput:
+      type: object
+      properties:
+        tbl_name:
+          type: string
+        tbl_lastname:
+          type: string
+        tbl_createat:
+          type: string
+          format: date
+        tbl_acept:
+          type: number
+          minimum: 0
+          maximum: 1
+        tbl_idnumber:
+          type: string
+        tbl_idtbl_documenttype:
+          type: number
+        tbl_idtbl_role:
+          type: number
+        tbl_idtbl_userdetails:
+          type: integer
+        tbl_password:
+          type: string
+        tbl_phone:
+          type: string
+        tbl_status:
+          type: number
+          minimum: 0
+          maximum: 1
+        tbl_update_at:
+          type: string
+          format: date
+        tbl_imagendocument:
+          type: string
+        tbl_mail:
+          type: string
+          format: mail
+        tbl_phonealt:
+          type: string
+        tbl_photo:
+          type: string
