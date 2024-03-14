@@ -22,6 +22,7 @@ tags:
 #----------------------------
 #Endpoints de la Entidad
 #----------------------------
+#------------------------------------CREAR USUSARIO----------------------------
 paths:
   /v1/es/usuario:
     post:
@@ -47,6 +48,8 @@ paths:
           description: "Parámetros de entrada no validos."
         "404":
           description: "No se encuentra la novedad."
+#------------------------------------------------------------------------------
+#------------------------------------OBTENER USUARIO----------------------------
   /v1/es/listUsuario/{idtbl_user}:
     get:
       tags:
@@ -63,6 +66,48 @@ paths:
       responses:
         "200":
           description: Usuario creado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UsuarioTypeResponse"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+#------------------------------------------------------------------------------
+#------------------------------------ELIMINAR USUARIO----------------------------
+  /v1/es/eliminarUsuario/{idtbl_user}:
+    delete:
+      tags:
+        - Eliminar Usuario
+      parameters:
+        - in: path
+          name: idtbl_user   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The user ID
+      operationId: eliminarUsuario
+      responses:
+        "200":
+          description: Usuario eliminado.
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+#------------------------------------------------------------------------------
+#------------------------------------LISTAR TODOS LOS USUARIO----------------------------
+  /v1/es/listadoUsuarios:
+    get:
+      tags:
+        - Listar todos los usuario
+      operationId: listarTodosLosUsuario
+      responses:
+        "200":
+          description: Lista de usuario.
           content:
             application/json:
               schema:

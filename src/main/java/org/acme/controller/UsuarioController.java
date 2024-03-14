@@ -51,4 +51,19 @@ public class UsuarioController implements V1UsuarioApi {
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }
+
+    @Override
+    public void eliminarUsuario(Integer idtblUser) {
+        try {
+            usuarioService.eliminarUsuario(idtblUser);
+        }catch(ApplicationException e){
+            LOG.error("Se presento un error al listar usuario por id"+ e.getMessage());
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<UsuarioTypeResponse> listarTodosLosUsuario() {
+        return null;
+    }
 }

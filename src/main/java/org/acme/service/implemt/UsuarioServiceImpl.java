@@ -39,9 +39,18 @@ public class UsuarioServiceImpl implements IUsuarioService {
             LOG.error("Error al crear usuario");
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
-
     }
 
-   /* @Transactional
-    public UsuarioTypeResponse */
+   @Transactional
+    public void eliminarUsuario(Integer idtblUser){
+       LOG.info("Inicia eliminacion de usuario");
+       try {
+           Long id = Long.valueOf(idtblUser);
+           usuarioDao.deleteById(id);
+           LOG.info("Termina eliminar usuario");
+       }catch(ApplicationException e){
+           LOG.error("Se presento un error al listar usuario por id"+ e.getMessage());
+           throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+       }
+   }
 }
