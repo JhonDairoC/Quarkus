@@ -14,11 +14,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UsuarioTypeInput")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-12T10:45:07.872668200-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-13T15:38:29.672710600-05:00[America/Bogota]")
 public class UsuarioTypeInput   {
-  private @Valid String tblName;
-  private @Valid String tblLastname;
-  private @Valid LocalDate tblCreateat;
+  private @Valid String name;
+  private @Valid String lastname;
+  private @Valid LocalDate createat;
   private @Valid BigDecimal tblAcept;
   private @Valid String tblIdnumber;
   private @Valid BigDecimal tblIdtblDocumenttype;
@@ -35,56 +35,56 @@ public class UsuarioTypeInput   {
 
   /**
    **/
-  public UsuarioTypeInput tblName(String tblName) {
-    this.tblName = tblName;
+  public UsuarioTypeInput name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @JsonProperty("tbl_name")
-  public String getTblName() {
-    return tblName;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  @JsonProperty("tbl_name")
-  public void setTblName(String tblName) {
-    this.tblName = tblName;
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
    **/
-  public UsuarioTypeInput tblLastname(String tblLastname) {
-    this.tblLastname = tblLastname;
+  public UsuarioTypeInput lastname(String lastname) {
+    this.lastname = lastname;
     return this;
   }
 
   
-  @JsonProperty("tbl_lastname")
-  public String getTblLastname() {
-    return tblLastname;
+  @JsonProperty("lastname")
+  public String getLastname() {
+    return lastname;
   }
 
-  @JsonProperty("tbl_lastname")
-  public void setTblLastname(String tblLastname) {
-    this.tblLastname = tblLastname;
+  @JsonProperty("lastname")
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
   }
 
   /**
    **/
-  public UsuarioTypeInput tblCreateat(LocalDate tblCreateat) {
-    this.tblCreateat = tblCreateat;
+  public UsuarioTypeInput createat(LocalDate createat) {
+    this.createat = createat;
     return this;
   }
 
   
-  @JsonProperty("tbl_createat")
-  public LocalDate getTblCreateat() {
-    return tblCreateat;
+  @JsonProperty("createat")
+  public LocalDate getCreateat() {
+    return createat;
   }
 
-  @JsonProperty("tbl_createat")
-  public void setTblCreateat(LocalDate tblCreateat) {
-    this.tblCreateat = tblCreateat;
+  @JsonProperty("createat")
+  public void setCreateat(LocalDate createat) {
+    this.createat = createat;
   }
 
   /**
@@ -335,9 +335,9 @@ public class UsuarioTypeInput   {
       return false;
     }
     UsuarioTypeInput usuarioTypeInput = (UsuarioTypeInput) o;
-    return Objects.equals(this.tblName, usuarioTypeInput.tblName) &&
-        Objects.equals(this.tblLastname, usuarioTypeInput.tblLastname) &&
-        Objects.equals(this.tblCreateat, usuarioTypeInput.tblCreateat) &&
+    return Objects.equals(this.name, usuarioTypeInput.name) &&
+        Objects.equals(this.lastname, usuarioTypeInput.lastname) &&
+        Objects.equals(this.createat, usuarioTypeInput.createat) &&
         Objects.equals(this.tblAcept, usuarioTypeInput.tblAcept) &&
         Objects.equals(this.tblIdnumber, usuarioTypeInput.tblIdnumber) &&
         Objects.equals(this.tblIdtblDocumenttype, usuarioTypeInput.tblIdtblDocumenttype) &&
@@ -355,7 +355,7 @@ public class UsuarioTypeInput   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tblName, tblLastname, tblCreateat, tblAcept, tblIdnumber, tblIdtblDocumenttype, tblIdtblRole, tblIdtblUserdetails, tblPassword, tblPhone, tblStatus, tblUpdateAt, tblImagendocument, tblMail, tblPhonealt, tblPhoto);
+    return Objects.hash(name, lastname, createat, tblAcept, tblIdnumber, tblIdtblDocumenttype, tblIdtblRole, tblIdtblUserdetails, tblPassword, tblPhone, tblStatus, tblUpdateAt, tblImagendocument, tblMail, tblPhonealt, tblPhoto);
   }
 
   @Override
@@ -363,9 +363,9 @@ public class UsuarioTypeInput   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UsuarioTypeInput {\n");
     
-    sb.append("    tblName: ").append(toIndentedString(tblName)).append("\n");
-    sb.append("    tblLastname: ").append(toIndentedString(tblLastname)).append("\n");
-    sb.append("    tblCreateat: ").append(toIndentedString(tblCreateat)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
+    sb.append("    createat: ").append(toIndentedString(createat)).append("\n");
     sb.append("    tblAcept: ").append(toIndentedString(tblAcept)).append("\n");
     sb.append("    tblIdnumber: ").append(toIndentedString(tblIdnumber)).append("\n");
     sb.append("    tblIdtblDocumenttype: ").append(toIndentedString(tblIdtblDocumenttype)).append("\n");

@@ -1,6 +1,5 @@
 package org.acme.gen.type;
 
-import java.time.LocalDate;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
@@ -13,64 +12,45 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UsuarioTypeResponse")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-12T10:45:07.872668200-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-13T15:38:29.672710600-05:00[America/Bogota]")
 public class UsuarioTypeResponse   {
-  private @Valid String tblName;
-  private @Valid String tblLastname;
-  private @Valid LocalDate tblCreateat;
+  private @Valid String name;
+  private @Valid String lastname;
 
   /**
    **/
-  public UsuarioTypeResponse tblName(String tblName) {
-    this.tblName = tblName;
+  public UsuarioTypeResponse name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @JsonProperty("tbl_name")
-  public String getTblName() {
-    return tblName;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
 
-  @JsonProperty("tbl_name")
-  public void setTblName(String tblName) {
-    this.tblName = tblName;
-  }
-
-  /**
-   **/
-  public UsuarioTypeResponse tblLastname(String tblLastname) {
-    this.tblLastname = tblLastname;
-    return this;
-  }
-
-  
-  @JsonProperty("tbl_lastname")
-  public String getTblLastname() {
-    return tblLastname;
-  }
-
-  @JsonProperty("tbl_lastname")
-  public void setTblLastname(String tblLastname) {
-    this.tblLastname = tblLastname;
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
    **/
-  public UsuarioTypeResponse tblCreateat(LocalDate tblCreateat) {
-    this.tblCreateat = tblCreateat;
+  public UsuarioTypeResponse lastname(String lastname) {
+    this.lastname = lastname;
     return this;
   }
 
   
-  @JsonProperty("tbl_createat")
-  public LocalDate getTblCreateat() {
-    return tblCreateat;
+  @JsonProperty("lastname")
+  public String getLastname() {
+    return lastname;
   }
 
-  @JsonProperty("tbl_createat")
-  public void setTblCreateat(LocalDate tblCreateat) {
-    this.tblCreateat = tblCreateat;
+  @JsonProperty("lastname")
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
   }
 
 
@@ -83,14 +63,13 @@ public class UsuarioTypeResponse   {
       return false;
     }
     UsuarioTypeResponse usuarioTypeResponse = (UsuarioTypeResponse) o;
-    return Objects.equals(this.tblName, usuarioTypeResponse.tblName) &&
-        Objects.equals(this.tblLastname, usuarioTypeResponse.tblLastname) &&
-        Objects.equals(this.tblCreateat, usuarioTypeResponse.tblCreateat);
+    return Objects.equals(this.name, usuarioTypeResponse.name) &&
+        Objects.equals(this.lastname, usuarioTypeResponse.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tblName, tblLastname, tblCreateat);
+    return Objects.hash(name, lastname);
   }
 
   @Override
@@ -98,9 +77,8 @@ public class UsuarioTypeResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UsuarioTypeResponse {\n");
     
-    sb.append("    tblName: ").append(toIndentedString(tblName)).append("\n");
-    sb.append("    tblLastname: ").append(toIndentedString(tblLastname)).append("\n");
-    sb.append("    tblCreateat: ").append(toIndentedString(tblCreateat)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("}");
     return sb.toString();
   }

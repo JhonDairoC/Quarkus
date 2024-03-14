@@ -7,14 +7,12 @@ import org.acme.controller.UsuarioController;
 import org.acme.dao.UsuarioDao;
 import org.acme.entity.Usuario;
 import org.acme.gen.type.UsuarioTypeInput;
-import org.acme.gen.type.UsuarioTypeResponse;
 import org.acme.service.contrat.IUsuarioService;
 import org.acme.utils.ApplicationException;
 import org.acme.utils.UsuarioMapper;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-import java.util.List;
 
 import static org.acme.constant.Constant.ERROR_SERVICIO;
 
@@ -26,8 +24,6 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Inject
     UsuarioDao usuarioDao;
 
-    @Inject
-    UsuarioController usuarioController;
     @Transactional
     public UsuarioTypeInput crearUsuario(UsuarioTypeInput usuarioTypeInput){
         LOG.info("Inicio crearUsuarioImpl");

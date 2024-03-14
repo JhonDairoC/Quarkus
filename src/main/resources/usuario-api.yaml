@@ -81,21 +81,21 @@ components:
     UsuarioTypeResponse:
       type: object
       properties:
-        tbl_name:
+        name:
           type: string
-        tbl_lastname:
+        lastname:
           type: string
-        tbl_createat:
+        createat:
           type: string
           format: date
     UsuarioTypeInput:
       type: object
       properties:
-        tbl_name:
+        name:
           type: string
-        tbl_lastname:
+        lastname:
           type: string
-        tbl_createat:
+        createat:
           type: string
           format: date
         tbl_acept:

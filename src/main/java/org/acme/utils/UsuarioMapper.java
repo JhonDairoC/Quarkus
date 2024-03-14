@@ -8,10 +8,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class UsuarioMapper {
     public Usuario usuarioTypeToEntity(UsuarioTypeInput usuarioTypeInput) {
-        Usuario usuario = new Usuario();
-        usuario.setTbl_name(usuarioTypeInput.getTblName());
-        usuario.setTbl_lastname(usuarioTypeInput.getTblLastname());
-        usuario.setTbl_createat(usuarioTypeInput.getTblCreateat());
-        return usuario;
+        return new ModelMapper().map(usuarioTypeInput, Usuario.class);
     }
 }

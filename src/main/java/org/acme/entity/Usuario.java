@@ -18,8 +18,12 @@ import java.time.LocalDate;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idtbl_user")
     public Long id;
-    public String tbl_name;
-    public String tbl_lastname;
-    public LocalDate tbl_createat;
+    @Column(name = "tbl_name")
+    public String name;
+    @Column(name = "tbl_lastname")
+    public String lastname;
+    @Column(name = "tbl_createat")
+    public LocalDate createat;
 }
