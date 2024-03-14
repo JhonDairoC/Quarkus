@@ -1,5 +1,6 @@
 package org.acme.gen.type;
 
+import java.time.LocalDate;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
@@ -12,10 +13,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UsuarioTypeResponse")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-13T15:38:29.672710600-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T15:12:59.825701600-05:00[America/Bogota]")
 public class UsuarioTypeResponse   {
   private @Valid String name;
   private @Valid String lastname;
+  private @Valid LocalDate createat;
 
   /**
    **/
@@ -53,6 +55,24 @@ public class UsuarioTypeResponse   {
     this.lastname = lastname;
   }
 
+  /**
+   **/
+  public UsuarioTypeResponse createat(LocalDate createat) {
+    this.createat = createat;
+    return this;
+  }
+
+  
+  @JsonProperty("createat")
+  public LocalDate getCreateat() {
+    return createat;
+  }
+
+  @JsonProperty("createat")
+  public void setCreateat(LocalDate createat) {
+    this.createat = createat;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -64,12 +84,13 @@ public class UsuarioTypeResponse   {
     }
     UsuarioTypeResponse usuarioTypeResponse = (UsuarioTypeResponse) o;
     return Objects.equals(this.name, usuarioTypeResponse.name) &&
-        Objects.equals(this.lastname, usuarioTypeResponse.lastname);
+        Objects.equals(this.lastname, usuarioTypeResponse.lastname) &&
+        Objects.equals(this.createat, usuarioTypeResponse.createat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, lastname);
+    return Objects.hash(name, lastname, createat);
   }
 
   @Override
@@ -79,6 +100,7 @@ public class UsuarioTypeResponse   {
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
+    sb.append("    createat: ").append(toIndentedString(createat)).append("\n");
     sb.append("}");
     return sb.toString();
   }

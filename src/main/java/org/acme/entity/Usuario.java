@@ -19,7 +19,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtbl_user")
-    public Long id;
+    public Integer id;
     @Column(name = "tbl_name")
     public String name;
     @Column(name = "tbl_lastname")

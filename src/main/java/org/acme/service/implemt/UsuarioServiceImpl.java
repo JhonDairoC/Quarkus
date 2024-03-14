@@ -7,6 +7,7 @@ import org.acme.controller.UsuarioController;
 import org.acme.dao.UsuarioDao;
 import org.acme.entity.Usuario;
 import org.acme.gen.type.UsuarioTypeInput;
+import org.acme.gen.type.UsuarioTypeResponse;
 import org.acme.service.contrat.IUsuarioService;
 import org.acme.utils.ApplicationException;
 import org.acme.utils.UsuarioMapper;
@@ -25,15 +26,22 @@ public class UsuarioServiceImpl implements IUsuarioService {
     UsuarioDao usuarioDao;
 
     @Transactional
-    public UsuarioTypeInput crearUsuario(UsuarioTypeInput usuarioTypeInput){
-        LOG.info("Inicio crearUsuarioImpl");
-        try{
+    public UsuarioTypeInput crearUsuario(UsuarioTypeInput usuarioTypeInput) {
+        LOG.info("Inicia crearUsuarioImpl");
+        UsuarioTypeInput usuarioTypeResponses;
+        try {
             Usuario usuario = usuarioMapper.usuarioTypeToEntity(usuarioTypeInput);
             usuarioDao.persist(usuario);
-            return null;
-        }catch(ApplicationException e){
+            usuarioTypeResponses = usuarioMapper.clienteEntityToType(usuario);
+            LOG.info("Persis usuario");
+            return usuarioTypeResponses;
+        }catch (ApplicationException e){
+            LOG.error("Error al crear usuario");
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
 
     }
+
+   /* @Transactional
+    public UsuarioTypeResponse */
 }
