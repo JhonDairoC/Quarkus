@@ -23,13 +23,12 @@ import java.util.List;
 import static org.acme.constant.Constant.ERROR_SERVICIO;
 
 @ApplicationScoped //Comvierte la clase en BIN
-public class UsuarioServiceImpl implements IUsuarioService {
+public class UsuarioServiceImpl{
     private static final Logger LOG = LoggerFactory.getLogger(UsuarioController.class);
     @Inject
     UsuarioMapper usuarioMapper;
     @Inject
     UsuarioDao usuarioDao;
-
 //------------------------------------------------------------------------------------------------
 //-------------------------------METODO PARA CREAR USUARIO----------------------------------------
     @Transactional
@@ -43,6 +42,21 @@ public class UsuarioServiceImpl implements IUsuarioService {
             return Collections.singletonList(response);
         }catch (ApplicationException e){
             LOG.error("Error al crear usuario");
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+    }
+//------------------------------------------------------------------------------------------------
+//-------------------------------METODO PARA OBTENER USUARIO----------------------------------
+    @Transactional
+    public List<UsuarioTypeResponse> listarUsuario(Integer idtblUser){
+        LOG.info("Inicia listarUsuarioImpl");
+        try {
+            Usuario user = usuarioDao.findById(idtblUser.longValue());
+            UsuarioTypeResponse response = usuarioMapper.usuarioEntityToType(user);
+            LOG.info("Finaliza listar usuario por id");
+            return  Collections.singletonList(response);
+        }catch (ApplicationException e){
+            LOG.error("Se presento un error al listar usuario por id"+ e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }

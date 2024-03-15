@@ -11,68 +11,45 @@ import org.acme.utils.ApplicationException;
 import org.acme.utils.UsuarioMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Collections;
 import java.util.List;
-
 import static org.acme.constant.Constant.ERROR_SERVICIO;
 
 public class UsuarioController implements V1UsuarioApi {
     private  static  final Logger LOG = LoggerFactory.getLogger(UsuarioController.class);
     @Inject
-    UsuarioServiceImpl usuarioService;
-    @Inject
-    UsuarioDao usuarioDao;
-    @Inject
-    UsuarioMapper usuarioMapper;
+    UsuarioServiceImpl usuarioServiceImpl;
 //------------------------------------------------------------------------------------------------
 //-------------------------------METODO PARA CREAR USUARIO----------------------------------------
     @Override
     public List<UsuarioTypeResponse> crearUsuario(UsuarioTypeInput usuarioTypeInput) {
-        try {
-            LOG.info("Termina Crear Usraio");
-            return usuarioService.crearUsuario(usuarioTypeInput);
-        }catch (ApplicationException e){
-            LOG.error("Se identifico error en el servicio ");
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        LOG.info("Termino el proceso Crear ususario");
+        return usuarioServiceImpl.crearUsuario(usuarioTypeInput);
     }
 //------------------------------------------------------------------------------------------------
 //-------------------------------METODO PARA EDITAR USUARIO---------------------------------------
     @Override
     public List<UsuarioTypeResponse> editarUsuario(Integer idtblUser, UsuarioTypeInput usuarioTypeInput) {
-        return usuarioService.editarUsuario(idtblUser, usuarioTypeInput);
+        LOG.info("Termino el proceso Editar usuario");
+        return usuarioServiceImpl.editarUsuario(idtblUser, usuarioTypeInput);
     }
 //------------------------------------------------------------------------------------------------
 //-------------------------------METODO PARA OBTENER USUARIO----------------------------------
     @Override
     public List<UsuarioTypeResponse> listarUsuario(Integer idtblUser){
         LOG.info("Inicia listarUsuarioImpl");
-        try {
-            Usuario user = usuarioDao.findById(idtblUser.longValue());
-            UsuarioTypeResponse response = usuarioMapper.usuarioEntityToType(user);
-            LOG.info("Finaliza listar usuario por id");
-            return  Collections.singletonList(response);
-        }catch (ApplicationException e){
-            LOG.error("Se presento un error al listar usuario por id"+ e.getMessage());
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        return usuarioServiceImpl.listarUsuario(idtblUser);
     }
 //------------------------------------------------------------------------------------------------
 //-------------------------------METODO PARA ELIMINAR USUARIO-------------------------------------
     @Override
     public void eliminarUsuario(Integer idtblUser) {
-        try {
-            usuarioService.eliminarUsuario(idtblUser);
-        }catch(ApplicationException e){
-            LOG.error("Se presento un error al listar usuario por id"+ e.getMessage());
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        usuarioServiceImpl.eliminarUsuario(idtblUser);
     }
 //------------------------------------------------------------------------------------------------
 //-------------------------------ETODO PARA LISTAR TODOS USUARIO----------------------------------
     @Override
     public List<UsuarioTypeResponse> listarTodosLosUsuario() {
-        return usuarioService.listarTodosLosUsuario();
+        return usuarioServiceImpl.listarTodosLosUsuario();
     }
 }

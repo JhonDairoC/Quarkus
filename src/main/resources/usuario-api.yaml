@@ -109,7 +109,7 @@ paths:
           name: idtbl_user   # Note the name is the same as in the path
           required: true
           schema:
-            type: Long
+            type: integer
             minimum: 1
           description: The user ID
       operationId: editarUsuario
