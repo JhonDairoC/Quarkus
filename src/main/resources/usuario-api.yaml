@@ -24,7 +24,7 @@ tags:
 #-------------------------------------------------------------------------------
 #------------------------------------CREAR USUSARIO-----------------------------
 paths:
-  /v1/es/usuario:
+  /v1/es/crearUsuario:
     post:
       tags:
         - Crear usuario
@@ -94,6 +94,40 @@ paths:
       responses:
         "200":
           description: Usuario eliminado.
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+#-------------------------------------------------------------------------------
+#------------------------------------EDITAR USUSARIO-----------------------------
+  /v1/es/editarUsuario/{idtbl_user}:
+    put:
+      tags:
+        - Editar usuario
+      parameters:
+        - in: path
+          name: idtbl_user   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: Long
+            minimum: 1
+          description: The user ID
+      operationId: editarUsuario
+      requestBody:
+        description: Editar usuario
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UsuarioTypeInput"
+      responses:
+        "200":
+          description: Usuario editado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UsuarioTypeResponse"
         "400":
           description: "Parámetros de entrada no validos."
         "404":

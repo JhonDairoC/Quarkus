@@ -16,21 +16,16 @@ public class UsuarioMapper {
         return new ModelMapper().map(usuarioTypeInput, Usuario.class);
     }
 
-    public List<UsuarioTypeResponse> usuarioEntityToTypeResponse(Usuario usuario) {
-        return Collections.singletonList(new ModelMapper().map(usuario, UsuarioTypeResponse.class));
-    }
-
-    public UsuarioTypeInput usuarioEntityToType(Usuario usuario){
-        return new ModelMapper().map(usuario, UsuarioTypeInput.class);
+    public UsuarioTypeResponse usuarioEntityToType(Usuario usuario){
+        return new ModelMapper().map(usuario, UsuarioTypeResponse.class);
     }
 
     public List<UsuarioTypeResponse> usuariosTypeListEntityToTypeResponse(List<Usuario> usuarios){
-        List<UsuarioTypeResponse> responses = new ArrayList<>(); // Create an empty list
+        List<UsuarioTypeResponse> responses = new ArrayList<>();
 
-        // Iterate through each Usuario in the original list
         for (Usuario usuario : usuarios) {
             UsuarioTypeResponse response = new ModelMapper().map(usuario, UsuarioTypeResponse.class);
-            responses.add(response); // Add the mapped response to the new list
+            responses.add(response);
         }
 
         return responses;

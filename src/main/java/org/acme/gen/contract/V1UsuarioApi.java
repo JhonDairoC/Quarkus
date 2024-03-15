@@ -17,14 +17,20 @@ import jakarta.validation.Valid;
 
 
 @Path("/v1/es")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-15T11:49:57.639230300-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-15T16:06:06.917260200-05:00[America/Bogota]")
 public interface V1UsuarioApi {
 
     @POST
-    @Path("/usuario")
+    @Path("/crearUsuario")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     List<UsuarioTypeResponse> crearUsuario(@Valid UsuarioTypeInput usuarioTypeInput);
+
+    @PUT
+    @Path("/editarUsuario/{idtbl_user}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    List<UsuarioTypeResponse> editarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser,@Valid UsuarioTypeInput usuarioTypeInput);
 
     @DELETE
     @Path("/eliminarUsuario/{idtbl_user}")
