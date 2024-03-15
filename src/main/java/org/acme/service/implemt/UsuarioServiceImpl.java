@@ -15,6 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.acme.constant.Constant.ERROR_SERVICIO;
 
 @ApplicationScoped //Comvierte la clase en BIN
@@ -26,16 +29,15 @@ public class UsuarioServiceImpl implements IUsuarioService {
     UsuarioDao usuarioDao;
 
     @Transactional
-    public UsuarioTypeInput crearUsuario(UsuarioTypeInput usuarioTypeInput) {
+    public List<UsuarioTypeResponse> crearUsuario(UsuarioTypeInput usuarioTypeInput) {
         LOG.info("Inicia crearUsuarioImpl");
-        UsuarioTypeInput usuarioTypeResponses;
         try {
             Usuario usuario = usuarioMapper.usuarioTypeToEntity(usuarioTypeInput);
             usuarioDao.persist(usuario);
-            usuarioTypeResponses = usuarioMapper.clienteEntityToType(usuario);
             LOG.info("Persis usuario");
-            return usuarioTypeResponses;
-        }catch (ApplicationException e){
+            return usuarioMapper.usuarioEntityToTypeResponse(usuario);
+
+        } catch (ApplicationException e) {
             LOG.error("Error al crear usuario");
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
@@ -48,9 +50,32 @@ public class UsuarioServiceImpl implements IUsuarioService {
            Long id = Long.valueOf(idtblUser);
            usuarioDao.deleteById(id);
            LOG.info("Termina eliminar usuario");
+
        }catch(ApplicationException e){
            LOG.error("Se presento un error al listar usuario por id"+ e.getMessage());
            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
        }
    }
+    @Transactional
+    public List<UsuarioTypeResponse> listarUsuarios(){
+        try{
+            List<Usuario> usuarios = usuarioDao.listAll();
+            return usuarioMapper.usuariosTypeListEntityToTypeResponse(usuarios);
+        }catch (ApplicationException e){
+            LOG.error("Se presento un error al listar usuarios "+ e.getMessage());
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+    }
+
+    @Transactional
+    public List<UsuarioTypeResponse> listarUsuario(Integer idtblUser){
+        try{
+            //Usuario id_user = usuarioDao.findById(Long.valueOf(idtblUser));
+            Usuario usuario  = usuarioDao.findById(Long.valueOf(idtblUser));
+            return usuarioMapper.usuarioEntityToTypeResponse(usuario);
+        }catch (ApplicationException e){
+            LOG.error("Se presento un error al listar usuarios "+ e.getMessage());
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
+        }
+    }
 }
