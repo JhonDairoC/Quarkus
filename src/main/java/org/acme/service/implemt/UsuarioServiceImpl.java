@@ -23,7 +23,7 @@ import java.util.List;
 import static org.acme.constant.Constant.ERROR_SERVICIO;
 
 @ApplicationScoped //Comvierte la clase en BIN
-public class UsuarioServiceImpl{
+public class UsuarioServiceImpl implements IUsuarioService{
     private static final Logger LOG = LoggerFactory.getLogger(UsuarioController.class);
     @Inject
     UsuarioMapper usuarioMapper;
